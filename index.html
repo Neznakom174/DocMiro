@@ -81,7 +81,7 @@ ul.l{margin:0;padding-left:20px;color:var(--mute)}ul.l li{margin-bottom:8px}
 footer{border-top:1px solid var(--line);padding:36px 0;color:var(--mute);font-size:15px}
 @media(max-width:860px){.hero .w,.three,.steps,.two,.panel{grid-template-columns:1fr}.fn{grid-template-columns:1fr}.fn .card{grid-column:auto!important}nav ul{display:none}section{padding:64px 0}.btn.o{margin:10px 0 0}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}}
-</style>
+.qr{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}.qr img{display:block;width:220px;height:220px;background:#fff;padding:12px;border-radius:16px;border:1px solid var(--line)}.qr h2{margin-bottom:12px}.qr p{margin:0;color:var(--mute);font-size:19px}.qr a{color:var(--acc);font-weight:700;word-break:break-all}.auth{margin-top:18px}.auth b{color:var(--ink)}@media(max-width:860px){.qr{grid-template-columns:1fr;justify-items:start}}footer{padding:64px 0;color:var(--ink)}.fin{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}.fin h2{font-size:clamp(24px,3.4vw,34px);margin:6px 0 16px}.names .team,.names .prod{color:var(--mute);margin:0;font-size:16px}.names ul{list-style:none;margin:0 0 20px;padding:0;font-size:22px;font-weight:700}.names li{margin-bottom:6px}.cur{margin:0 0 20px;font-size:22px;font-weight:700}.cur span{display:block;font:500 14px Onest;color:var(--mute);margin-bottom:2px}.code{text-align:center}.code img{display:block;width:220px;height:220px;background:#fff;padding:12px;border-radius:16px;border:1px solid var(--line);margin:0 auto 12px}.code p{margin:0;color:var(--mute);font-size:15px}.code a{color:var(--acc);font-weight:700}@media(max-width:860px){.fin{grid-template-columns:1fr}.code{text-align:left}.code img{margin:0 0 12px}}</style>
 </head>
 <body>
 <nav><div class="w"><a class="logo" href="#top">Docmiro</a>
@@ -174,42 +174,11 @@ footer{border-top:1px solid var(--line);padding:36px 0;color:var(--mute);font-si
 
 <div class="two" style="margin-top:18px">
 <div class="card"><h3>Организационные правила</h3><ul class="l"><li>Публикация только с согласия всех соавторов. Если кто-то против, проект публикуется без его имени или остаётся приватным.</li><li>Споры разбирает учитель по журналу действий.</li><li>Анонимная взаимная оценка участников служит дополнением, оценку учителя она не меняет.</li><li>О подозрительном входе ученик сообщает учителю, администратор блокирует аккаунт.</li></ul></div>
-<div class="card"><h3>Технические меры</h3><ul class="l"><li>2FA при входе, лимит попыток, пароли только в виде хэшей.</li><li>Журнал действий только на добавление: удалить или изменить запись не может никто.</li><li>HTTPS (TLS) для всей передачи данных.</li><li>Три резервные копии, проверка каждой копии, шифрование для хранения.</li><li>Хранение данных несовершеннолетних по 152-ФЗ с согласием родителей.</li></ul></div>
+<div class="card"><h3>Технические меры</h3><ul class="l"><li>2FA при входе, лимит попыток, пароли только в виде хэшей.</li><li>Журнал действий только на добавление: удалить или изменить запись не может никто.</li><li>HTTPS (TLS) для всей передачи данных.</li><li>Три резервные копии, проверка каждой копии, шифрование для хранения.</li><li>Данные несовершеннолетних защищаются по закону о персональных данных: сервис собирает только необходимые сведения, обрабатывает их с согласия родителей и хранит на серверах в России (152-ФЗ).</li></ul></div>
 </div></div></section>
 
 <section id="roles" style="background:var(--surface)"><div class="w">
 <h2>Кто что видит</h2>
 <p class="lead">Доступы не раздаются всем подряд. Выберите роль.</p>
 <div class="tabs" role="tablist" id="tabs"></div>
-<div class="panel" role="tabpanel" aria-live="polite"><div class="card"><h3>Что видит</h3><p id="see">Свои проекты и портфолио</p></div><div class="card"><h3>Что может делать</h3><p id="can">Редактировать задачи, настраивать доступ к портфолио</p></div></div>
-<p class="rolenote">Администрация видит только подтверждённые записи, без личных заметок. Родители видят портфолио в режиме просмотра, только если ученик это разрешил.</p>
-</div></section>
-
-<section id="case"><div class="w">
-<h2>Сценарий: саботаж</h2>
-<p class="inc"><b>Инцидент:</b> участник из-за ссоры удалил итоговый файл перед сдачей.</p>
-<div class="steps">
-<div class="card"><h3>Восстановление</h3><p>Файл возвращается из корзины проекта или из резервной копии в один клик.</p></div>
-<div class="card"><h3>Разбор</h3><p>По Audit Log учитель видит, кто и когда удалил файл.</p></div>
-<div class="card"><h3>Оценка</h3><p>Оценки выставляются по реальному вкладу каждого.</p></div>
-</div></div></section>
-
-<section id="questions"><div class="w">
-<h2>Ключевые вопросы команды</h2><p class="lead">Ответы, на которых построен сервис.</p>
-<div class="three">
-<div class="card"><h3>Справедливая оценка</h3><p>Журнал вклада даёт факты, задачи распределяются в начале проекта, учитель ставит индивидуальные оценки, взаимная оценка участников служит дополнением.</p></div>
-<div class="card"><h3>Авторство и споры</h3><p>Каждая правка хранится с автором и временем; историю не может удалить или изменить никто, включая администратора. Спор разбирает учитель по Audit Log, публикация возможна только по согласию всех авторов.</p></div>
-<div class="card"><h3>Кто видит портфолио</h3><p>Учителя видят только свои проекты, администрация только подтверждённые записи, вузы только по ссылке или QR-коду от ученика, родители только с его разрешения.</p></div>
-</div></div></section>
-
-<footer><div class="w">Команда «Солянка» · Омск, 2026 · Docmiro (EduPortfolio Hub)</div></footer>
-
-<script>
-var R=[["Ученик","Свои проекты и портфолио","Редактировать задачи, настраивать доступ к портфолио"],["Учитель","Проекты своих классов и логи","Оценивать вклад и подтверждать проекты. Не может удалять или менять записи журнала"],["Администратор","Всех пользователей","Управлять доступом и блокировками, запускать восстановление из копий. Не может менять оценки и записи журнала"],["Вуз / гость","Только публичную ссылку","Только просмотр"],["Родитель","Портфолио, если разрешил ученик","Только просмотр"]];
-var t=document.getElementById("tabs");
-function sel(i){[].forEach.call(t.children,function(b,j){b.setAttribute("aria-selected",j==i)});document.getElementById("see").textContent=R[i][1];document.getElementById("can").textContent=R[i][2]}
-R.forEach(function(r,i){var b=document.createElement("button");b.setAttribute("role","tab");b.textContent=r[0];b.onclick=function(){sel(i)};t.appendChild(b)});
-sel(0);
-</script>
-</body>
-</html>
+<div class="panel" role="tabpanel" aria-live="polite"><div class="card"><h3>Что видит</h3><p id="see">
