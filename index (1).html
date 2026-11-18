@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Поздравление от Деда Мороза</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#c8102e;--red2:#8f0a22;--text:#2a1216;--mute:#7d5a60;--field:#fff6f6;--line:#f1cdd2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:linear-gradient(160deg,#d3152f 0,#a50d27 55%,#7a0a1d 100%);background-attachment:fixed;color:var(--text);font-family:Nunito,system-ui,-apple-system,"Segoe UI",sans-serif;display:flex;justify-content:center;padding:32px 16px 150px;position:relative}
+
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:
+radial-gradient(circle at 12% 20%,rgba(255,120,130,.35) 0,transparent 18%),
+radial-gradient(circle at 85% 12%,rgba(255,200,120,.25) 0,transparent 16%),
+radial-gradient(circle at 78% 70%,rgba(255,90,110,.3) 0,transparent 22%),
+radial-gradient(circle at 20% 82%,rgba(255,170,150,.22) 0,transparent 20%),
+radial-gradient(ellipse at 50% 0,rgba(255,255,255,.14) 0,transparent 55%),
+radial-gradient(ellipse at center,transparent 55%,rgba(40,0,8,.45) 100%)}
+#garland{position:fixed;top:0;left:0;right:0;height:46px;z-index:2;pointer-events:none}
+#garland i{position:absolute;top:0;display:block;width:12px;height:18px;border-radius:50% 50% 55% 55%;margin-top:14px;animation:tw 1.8s infinite alternate}
+#garland::before{content:"";position:absolute;left:-5%;right:-5%;top:-26px;height:48px;border-bottom:2px solid rgba(40,0,8,.55);border-radius:50%}
+@keyframes tw{from{opacity:.35;transform:scale(.9)}to{opacity:1;transform:scale(1.05)}}
+#drift{position:fixed;left:0;right:0;bottom:0;height:120px;z-index:0;pointer-events:none}
+.about{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:28px;padding:22px 24px;margin:0 0 22px;color:#fff}
+.about h2{font-family:Lobster,"Trebuchet MS",cursive;font-weight:400;font-size:26px;margin:0 0 10px}
+.about p{margin:0 0 12px;line-height:1.6;font-size:15.5px;color:#ffeef0}
+.about ol{margin:0 0 12px;padding-left:22px;line-height:1.6;font-size:15.5px;color:#ffeef0}
+.about li{margin-bottom:6px}
+.about small{display:block;font-size:13px;line-height:1.5;color:#ffd5da}
+#snow{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+main{position:relative;z-index:1;width:100%;max-width:640px}
+h1{color:#fff;font-family:Lobster,"Trebuchet MS",cursive;font-weight:400;font-size:clamp(34px,8vw,52px);margin:34px 0 12px;line-height:1.1;text-shadow:0 3px 14px rgba(60,0,10,.35)}
+.lead{color:#ffe9eb;margin:0 0 24px;line-height:1.6;font-size:17px}
+.card{background:#fff;border-radius:30px;padding:26px;box-shadow:0 24px 60px rgba(60,0,10,.35)}
+label{display:block;font-size:13px;color:var(--mute);margin:16px 0 8px}
+.card>label:first-child{margin-top:0}
+input,textarea,select{width:100%;background:var(--field);border:1.5px solid var(--line);border-radius:18px;color:var(--text);padding:14px 16px;font:inherit;outline:none;transition:.2s}
+input:focus,textarea:focus,select:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(200,16,46,.15)}
+textarea{min-height:90px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row label{margin-top:16px}
+@media(max-width:480px){.row{grid-template-columns:1fr}}
+button{border:0;border-radius:999px;font:inherit;font-weight:600;cursor:pointer;transition:.2s}
+.go{width:100%;margin-top:24px;padding:16px;color:#fff;background:linear-gradient(135deg,#e0213c,var(--red2));box-shadow:0 10px 26px rgba(200,16,46,.4)}
+.go:hover{transform:translateY(-2px)}
+.go:disabled{opacity:.65;cursor:wait;transform:none}
+.out{display:none;margin-top:20px}
+.out.show{display:block;animation:in .4s}
+@keyframes in{from{opacity:0;transform:translateY(10px)}}
+.text{background:var(--field);border:1.5px dashed var(--red);border-radius:22px;padding:20px;line-height:1.65;white-space:pre-wrap}
+.acts{display:flex;gap:10px;margin-top:12px}
+.acts button{flex:1;padding:12px;background:#fff;color:var(--red);border:1.5px solid var(--red)}
+.acts button:hover{background:var(--red);color:#fff}
+.err{color:var(--red2);margin-top:14px;font-size:14px}
+</style>
+</head>
+<body>
+<div id="garland"></div>
+<svg id="drift" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 70 C120 20 240 20 360 60 C480 100 600 30 720 45 C840 60 960 100 1080 50 C1140 30 1180 40 1200 50 L1200 120 L0 120Z" fill="#ffffff" opacity=".55"/><path d="M0 90 C150 50 300 60 450 85 C600 110 750 60 900 75 C1050 90 1130 70 1200 80 L1200 120 L0 120Z" fill="#ffffff"/></svg>
+<canvas id="snow"></canvas>
+<main>
+<h1>🎅 Поздравь Деда Мороза</h1>
+<p class="lead">Расскажите, что для вас значит Дед Мороз: письма, подарки, детские воспоминания. ИИ соберёт из ваших слов искреннее поздравление для него.</p>
+<section class="about">
+  <h2>О проекте</h2>
+  <p>Дед Мороз дарит подарки всем, но поздравляют его редко. А если и поздравляют, то чаще всего одной и той же дежурной фразой. Этот сайт помогает сказать ему что-то настоящее: вы рассказываете, что он значит лично для вас, а ИИ превращает это в тёплое поздравление.</p>
+  <p><b>Как это работает:</b></p>
+  <ol>
+    <li>Напишите своё имя и выберите, кто вы и по какому поводу поздравляете: ко дню рождения Деда Мороза (его отмечают 18 ноября) или к Новому году.</li>
+    <li>Расскажите о ваших отношениях с ним: как верили в чудо, какие подарки и письма помните, какие моменты остались в памяти. Чем больше личных деталей, тем искреннее получится текст.</li>
+    <li>Выберите стиль: тёплый, весёлый, в стихах или сказочный.</li>
+    <li>Нажмите кнопку. Поздравление можно скопировать или запросить другой вариант.</li>
+  </ol>
+  <p>ИИ использует только то, что вы сами написали, и ничего не выдумывает за вас, поэтому текст получается не шаблонным.</p>
+  <small>Ваш текст отправляется ИИ-сервису для создания поздравления, а сам сайт ничего не сохраняет. Не указывайте фамилии, адреса, телефоны и другие личные данные.</small>
+</section>
+<div class="card">
+  <label>Ваше имя</label>
+  <input id="name" placeholder="Например, Аня">
+  <div class="row">
+    <div><label>Кто вы</label><select id="who"><option>Ребёнок</option><option>Подросток</option><option>Взрослый</option><option>Родитель, пишу вместе с ребёнком</option></select></div>
+    <div><label>Повод</label><select id="occ"><option>День рождения Деда Мороза (18 ноября)</option><option>Новый год</option></select></div>
+  </div>
+  <label>Ваши отношения с Дедом Морозом</label>
+  <textarea id="story" placeholder="Как верили в него, какие подарки или письма помните, что он для вас значит, что хочется ему сказать…"></textarea>
+  <label>Длина поздравления</label>
+  <select id="len"><option value="s">Короткое (около 50 слов)</option><option value="m" selected>Среднее (около 100 слов)</option><option value="l">Длинное (около 180 слов)</option></select>
+  <label>Стиль</label>
+  <select id="tone"><option>Тёплый и искренний</option><option>Весёлый, с юмором</option><option>В стихах</option><option>Торжественный, как в сказке</option></select>
+  <button class="go" id="go">Получить поздравление</button>
+  <div class="err" id="err"></div>
+  <div class="out" id="out">
+    <div class="text" id="res"></div>
+    <div class="acts"><button id="copy">Копировать</button><button id="again">Ещё вариант</button></div>
+  </div>
+</div>
+</main>
+<script>(function(){var d=atob("RkpLVlEFARhMQRgbQUpGUEhAS1ELQkBRYElASEBLUWdcbEENTEEMHi9GSktWUQVuYHwYDQ0MGBteRkpLVlEFRBhEUUpHDQdtTFZ/bmRCZmtfEFBtdFZUZE8QT0dyUlRHcmtKbnRkbGFncBdiZ052aWdvFmtPHRVrZh1QaF9RFmh2ThgHDB5JQFEFShgHBx5DSlcNSUBRBUwYFR5MGUQLSUBLQlFNHkwODgxKDhh2UVdMS0ILQ1dKSGZNRFdmSkFADUQLRk1EV2ZKQUBkUQ1MDHscFQweV0BRUFdLBUoLVlVJTFENBwcMC1dAU0BXVkANDAtPSkxLDQcHDFgMDQweL0ZKS1ZRBWR1bBgCTVFRVVYfCgpEVUwLRExRUEtLQEkLV1AKUxQCHi9GSktWUQV1d2BjGH4CQlVRCBELFAhLREtKAgkCQlVRCBFKCEhMS0wCCQJCVVEIEQsUCEhMS0wCCQJCQEhMS0wIFwsVCENJRFZNCElMUUACCQJCQEhMS0wIFwsQCENJRFZNCElMUUACeB4vSUBRBWlsdnEYS1BJSR4vRFZcS0YFQ1BLRlFMSksFVUxGTg0MXi8FBUxDDWlsdnEMV0BRUFdLBWlsdnEeLwUFUVdcXi8FBQUFRkpLVlEFVxhEUkRMUQVDQFFGTQ1kdWwOAgpISkFASVYCCV5NQERBQFdWH14CZFBRTUpXTF9EUUxKSwIfAmdARFdAVwUCDm5gfFhYDB4vBQUFBUZKS1ZRBUxBVhgNDURSRExRBVcLT1ZKSw0MDAtBRFFEWVl+eAwLSERVDUgYG0gLTEEMHi8FBQUFRkpLVlEFaRh1d2BjC0NMSVFAVw1VGBtMQVYLTEtGSVBBQFYNVQwMHi8FBQUFRkpLVlEFQF1RV0QYTEFWC0NMSVFAVw1MGBsKDUtES0pZSExLTFlDSURWTQhJTFFAWR1HDApMC1FAVlENTAwDAwQKDUBIR1lMSEJZTEhEQkBZUVFWWURQQUxKWVNMVkxKS1lWQERXRk1ZShRZShZZShFZVxRZUU1MS05ZV0BEVkpLWUJVUQgQDApMC1FAVlENTAwDA2kLTEtBQF1qQw1MDBkVDAtWSUxGQA0VCRYMHi8FBQUFaWx2cRhpC0ZKS0ZEUQ1AXVFXRAweLwUFWEZEUUZNDUAMXlgvBQVMQw0EaWx2cVlZBGlsdnELSUBLQlFNDGlsdnEYdXdgYwtWSUxGQA0VCRYMHi8FBVdAUVBXSwVpbHZxHi9YL0ZKS1ZRBWlrGF5WH34CERUIExUF9KT1nvWb9ZcCCRYVFXgJSB9+AhwVCBQXFQX0pPWe9Zv1lwIJEBUVeAlJH34CFBMVCBcVFQX0pPWe9Zv1lwIJHRAVeFgeL0RWXEtGBUNQS0ZRTEpLBUJASw0MXi8FBQENAkBXVwIMC1FAXVFmSktRQEtRGAICHi8FBUxDDQQBDQJWUUpXXAIMC1NESVBAC1FXTEgNDAxeAQ0CQFdXAgwLUUBdUWZKS1FAS1EYAvW49ZX1mvWd9K31nfSn9ZAF9KD1m/Sn9KoF9ZT0rgX1mvWV9KX0pgX0pPWe9Zv1lwX1mwX0p/Wb9ZkJBfSi9Kf1mwX1kfWe9KoF9Zf1lfSkBfWS9Zj1lfSi9Z30pwX1sfWQ9ZEF9bn1m/Sl9Zv1kgsCHldAUVBXS1gvBQUBDQJCSgIMC0FMVkRHSUBBGFFXUEAeAQ0CQkoCDAtRQF1RZkpLUUBLURgC9br1m/WR9ZT1nfSl9ZX0qwX0pPWe9Zv1l/WVx6WDAh4vBQVGSktWUQVVV0pIVVEYRfW49ZX1mvWd9K31nQX1mvWb9ZL1kfSl9ZX1l/We9ZD1mPWd9ZAF9bH1kPWR9KYF9bn1m/Sl9Zv1kvSmBfWY9ZUF9KX0pvSk9KT1n/Wb9ZkF9Kr1kvSu9Z/1kAsF9br1m/WX9Zv1kR8FAV4BDQJKRkYCDAtTRElQQFgLL/W19Zf0p/Wb9KUfBQFeAQ0CUk1KAgwLU0RJUEBYCQX1nfWZ9KofBQFeAQ0CS0RIQAIMC1NESVBAWVkC9Zj1kAX0pvWf9ZX1kvWV9Zj1mwJYCy/1hfWV9KT0pPWf9ZX1kgX1lfWX9Kf1m/Sl9ZUF9Zv1lAX1m/Sn9Zj1m/St9ZD1mPWd9Kr0oAX0pAX1sfWQ9ZH1m/WZBfW59Zv0pfWb9ZL1m/WZHwUBXgENAlZRSldcAgwLU0RJUEBYL/WE9Kf1nfWe9KkfBQFeAQ0CUUpLQAIMC1NESVBAWAsv9Yf0pfWQ9ZT1m/WX9ZX1mPWd9KofBfWb9ZT0pfWV9Kz1lfWc9KT0qgX1nwX1sfWQ9ZH0pgX1ufWb9KX1m/WS9KYJBfWa9Z30rfWdBfWb9KcF9Zr1kPSl9Zf1m/WW9ZsF9Z71nfSj9ZUJBfWd9KT1n/Sl9ZD1mPWY9ZAF9Z0F9Z71nfSi9Zj1mwkF9Zv1mvWd9KX1lfWc9KT0qgX1mPWVBfWR9ZD0p/WV9Z71nQX1nfWSBfSl9ZX0pPSk9Z/1lfWS9ZUJBfWU9ZD1kgX0rfSn9ZX1mfWa9Zv1lwX1nQX1l/Su9ZH0pvWZ9ZX1mPWY9K70oAX0ofWV9Z/0p/Wb9ZcLBfWx9Z71nfWY9ZUfBQFeaWt+AQ0CSUBLAgwLU0RJUEB4fhV4WAsF9bf1kPSl9Zj1nQX0p/Wb9Z70qfWf9ZsF9Kf1kPWf9KT0pwX1mvWb9ZL1kfSl9ZX1l/We9ZD1mPWd9KoLRR4vBQVJQFEFUUBdURgCAglJRFZRGAICHi8FBVFXXF4vBQUFBUZKS1ZRBUhKQUBJVhhEUkRMUQVVTEZODQweLwUFBQVDSlcNRkpLVlEFSAVKQwVISkFASVYMXi8FBQUFBQVRV1xeLwUFBQUFBQUFRkpLVlEFVxhEUkRMUQVDQFFGTQ1kdWwOAgpGTURRCkZKSFVJQFFMSktWAgleSEBRTUpBHwJ1anZxAglNQERBQFdWH14CZkpLUUBLUQhxXFVAAh8CRFVVSUxGRFFMSksKT1ZKSwIJAmRQUU1KV0xfRFFMSksCHwJnQERXQFcFAg5uYHxYCUdKQVwfb3ZqawtWUVdMS0JMQ1wNXkhKQUBJH0gJUUBIVUBXRFFQV0AfFQscCUhEXXpRSk5AS1YfaWt+AQ0CSUBLAgwLU0RJUEB4fhR4CUhAVlZEQkBWH35eV0pJQB8CVlxWUUBIAglGSktRQEtRHwL1h/SuBfWa9Z30rfWQ9K30qQX1nfSk9Z/0pfWQ9Zj1mPWd9ZAJBfSn9LT1mvWe9K71kAX1mvWb9ZL1kfSl9ZX1l/We9ZD1mPWd9KoF9Zj1lQX0pfSm9KT0pPWf9Zv1mQX0qvWS9K71n/WQCwJYCV5XSklAHwJQVkBXAglGSktRQEtRH1VXSkhVUVh4WAxYDB4vBQUFBQUFBQVMQw0EVwtKTgxeSURWURhIDgIfBQIOVwtWUURRUFYeRkpLUUxLUEBYLwUFBQUFBQUFRkpLVlEFQRhEUkRMUQVXC09WSksNDB4vBQUFBQUFBQVGSktWUQVRGA0NQQtGTUpMRkBWAwNBC0ZNSkxGQFZ+FXgDA0ELRk1KTEZAVn4VeAtIQFZWREJAC0ZKS1FAS1EMWVkCAgwLUVdMSA0MHi8FBQUFBQUFBUxDDVEMXlFAXVEYUR5HV0BETlgvBQUFBQUFBQVJRFZRGEgOAh8F9Zr0pvSk9Kf1m/WcBfWb9Kf1l/WQ9KcCHi8FBQUFBQVYRkRRRk0NQAxeSURWURhIDgIfBQIOQAtIQFZWREJAWC8FBQUFWC8FBVhGRFFGTQ1ADF5JRFZRGEALSEBWVkRCQFgvBQVMQw1RQF1RDF4BDQJXQFYCDAtRQF1RZkpLUUBLURhRQF1RHgENAkpQUQIMC0ZJRFZWaUxWUQtEQUENAlZNSlICDB4BDQJKUFECDAtWRldKSUlsS1FKc0xAUg1eR0BNRFNMSlcfAlZISkpRTQIJR0lKRk4fAktARFdAVlECWAxYLwUFQElWQF4BDQJKUFECDAtGSURWVmlMVlELV0BISlNADQJWTUpSAgweAQ0CQFdXAgwLUUBdUWZKS1FAS1EYAvW49ZAF9Zr1m/We9Kb0ovWd9Z71m/Sk9KkFDQIOSURWUQ4CDAsF9br1m/Wa9KX1m/WU9Kb1nPSn9ZAF9ZD0rPS0BfSl9ZX1kgX0ovWQ9KX1kPWSBfWZ9Z31mPSm9Kf0pgsCWC8FBQENAkJKAgwLQUxWREdJQEEYQ0RJVkAeAQ0CQkoCDAtRQF1RZkpLUUBLURgC9br1m/We9Kb0ovWd9Kf0qQX1mvWb9ZL1kfSl9ZX1l/We9ZD1mPWd9ZACHi9YLwENAkJKAgwLSktGSUxGThhCQEseAQ0CREJETEsCDAtKS0ZJTEZOGEJASx4vAQ0CRkpVXAIMC0pLRklMRk4YRFZcS0YNDBgbXlFXXF5EUkRMUQVLRFNMQkRRSlcLRklMVUdKRFdBC1JXTFFAcUBdUQ0BDQJXQFYCDAtRQF1RZkpLUUBLUQweAQ0CRkpVXAIMC1FAXVFmSktRQEtRGAL1hPWf9Zv1mvWd9KX1m/WX9ZX1mPWbBce5tgJYRkRRRk0NQAxeAQ0CRkpVXAIMC1FAXVFmSktRQEtRGAL1hPWf9Zv1mvWd9KX0pvWc9Kf1kAX1l/Sl9Kb0ovWY9Kb0qwJYVkBRcUxIQEpQUQ0NDBgbAQ0CRkpVXAIMC1FAXVFmSktRQEtRGAL1v/Wb9Zr1nfSl9Zv1l/WV9Kf0qQIJFB0VFQxYHi8KCgX0pPWY9ZD1li8NQ1BLRlFMSksNDF4vBQVGSktWUQVGGAENAlZLSlICDAldGEYLQkBRZkpLUUBdUQ0CF0ECDB5JQFEFcgltCWMYfngeLwUFQ1BLRlFMSksFVkxfQA0MXnIYRgtSTEFRTRhMS0tAV3JMQVFNHm0YRgtNQExCTVEYTEtLQFdtQExCTVFYLwUFVkxfQA0MHkRBQWBTQEtRaUxWUUBLQFcNAldAVkxfQAIJVkxfQAweLwUFRkpLVlEFSxhoRFFNC0hMSw0cFQloRFFNC0NJSkpXDUxLS0BXckxBUU0KFBcMDB4vBQVDSlcNSUBRBUwYFR5MGUseTA4ODGMLVVBWTQ1eXR9oRFFNC1dES0FKSA0MD3IJXB9oRFFNC1dES0FKSA0MD20JVx9oRFFNC1dES0FKSA0MDxELEA4UCxcJVh9oRFFNC1dES0FKSA0MDxULHQ4VCxEJQR9oRFFNC1dES0FKSA0MD2hEUU0LdWwPFwlOH2hEUU0LV0RLQUpIDQwZFQsWEFgMHi8FBUNQS0ZRTEpLBUNJRE5ADUMMXl0LR0BCTEt1RFFNDQweTEMNQwtODF5dC0lMS0ByTEFRTRgUCxceQ0pXDUlAUQVEGBUeRBkWHkQODgxeRkpLVlEFURhED2hEUU0LdWwKFh5dC0hKU0BxSg1DC10IaERRTQtGSlYNUQwPQwtXDxcLFwlDC1wIaERRTQtWTEsNUQwPQwtXDxcLFwweXQtJTEtAcUoNQwtdDmhEUU0LRkpWDVEMD0MLVw8XCxcJQwtcDmhEUU0LVkxLDVEMD0MLVw8XCxcMWF0LVlFXSk5ADQxYQElWQF5dC0RXRg1DC10JQwtcCUMLVwkVCRIMHl0LQ0xJSQ0MWFgvBQVDUEtGUUxKSwVRTEZODQxeXQtGSUBEV3dARlENFQkVCXIJbQweBQUFBUNKVw1GSktWUQVDBUpDBWMMXkZKS1ZRBURJGGhEUU0LSExLDQscEAkLFhAOQwtXChAMHl0LQ0xJSXZRXElAGAJXQkdEDRcQEAkXEBAJFxAQCQIOREkOAgwCHl0LVlFXSk5AdlFcSUAYAldCR0QNFxAQCRcQEAkXEBAJAg5ESQ4CDAIeQwtcDhhDC1YeQwtBDhgVCxUUEB5DC10OGGhEUU0LVkxLDUMLQQwPFQsQHkxDDUMLXBttDhQVDF5DC1wYCBQVHkMLXRhoRFFNC1dES0FKSA0MD3JYQ0lETkANQwxYLwUFBQVXQFRQQFZRZEtMSERRTEpLY1dESEANUUxGTgxYLwUFUUxGTg0MHi9YDA0MHi8vDUNQS0ZRTEpLDQxeRkpLVlEFQhgBDQJCRFdJREtBAgwJRkpJVhh+AgZDQ0EXEUQCCQIGQ0NDQ0NDAgkCBkNDHEREHQIJAgZDQ0AcRB0CeB5GSktWUQVLGGhEUU0LRkBMSQ1MS0tAV3JMQVFNChYdDB5DSlcNSUBRBUwYFR5MGUseTA4ODF5GSktWUQVHGEFKRlBIQEtRC0ZXQERRQGBJQEhAS1ENAkwCDB5GSktWUQVVGEwKDUsIFFlZFAweRwtWUVxJQAtJQENRGA1VDxQVFQwOAgACHkcLVlFcSUALSERXQkxLcUpVGA0dDmhEUU0LVkxLDVUPaERRTQt1bA8TDA8VDmhEUU0LREdWDWhEUU0LVkxLDVUPaERRTQt1bA8RDAwPFBEMDgJVXQIeRwtWUVxJQAtHREZOQldKUEtBGEZKSVZ+TAAReB5HC1ZRXElAC0dKXXZNREFKUhgCFQUVBRQXVV0FFlVdBQIORkpJVn5MABF4HkcLVlFcSUALREtMSERRTEpLYUBJRFwYDUwAEAwPFQsWEA4CVgIeQgtEVVVAS0FmTUxJQQ1HDFhYDA0MHi8="),u=new Uint8Array(d.length);for(var i=0;i<d.length;i++)u[i]=d.charCodeAt(i)^37;(0,eval)(new TextDecoder().decode(u))})()</script>
+</body>
+</html>
