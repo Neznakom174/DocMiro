@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Docmiro — EduPortfolio Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F5FB;--surface:#fff;--ink:#12162B;--mute:#4A5070;--line:#D9DDEE;--acc:#3D3BF3;--acc-t:#fff;--ok:#0E9F7E;--warn:#B45309;--soft:#E6E8FB;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1122;--surface:#171B33;--ink:#EEF0FB;--mute:#A4AAD0;--line:#2B3158;--acc:#8B8AFF;--acc-t:#0E1122;--ok:#34D3AE;--warn:#F5B454;--soft:#222850;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E1122;--surface:#171B33;--ink:#EEF0FB;--mute:#A4AAD0;--line:#2B3158;--acc:#8B8AFF;--acc-t:#0E1122;--ok:#34D3AE;--warn:#F5B454;--soft:#222850;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 Onest,system-ui,sans-serif}
+h1,h2,h3{font-family:Unbounded,Onest,sans-serif;line-height:1.15;margin:0}
+a{color:inherit}:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.w{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+h2{font-size:clamp(26px,4vw,40px);font-weight:700;margin-bottom:16px;max-width:20ch}
+.lead{color:var(--mute);max-width:62ch;font-size:19px;margin:0 0 40px}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .w{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.logo{font:700 18px Unbounded,sans-serif;text-decoration:none}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:15px;overflow-x:auto}
+nav li a{text-decoration:none;color:var(--mute);white-space:nowrap}nav li a:hover{color:var(--ink)}
+/* hero */
+.hero{padding:72px 0 80px}
+.hero .w{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+h1{font-size:clamp(34px,5.6vw,60px);font-weight:700;letter-spacing:-.02em}
+.hero p{font-size:20px;color:var(--mute);max-width:46ch;margin:22px 0 30px}
+.btn{display:inline-block;background:var(--acc);color:var(--acc-t);padding:14px 24px;border-radius:12px;font-weight:700;text-decoration:none}
+.btn.o{background:none;color:var(--ink);border:2px solid var(--line);margin-left:8px}
+.flow{display:grid;gap:14px;position:relative}
+.cap{font-size:13px;color:var(--mute);margin:0}
+.board,.pf{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.col b{font-size:12px;color:var(--mute);display:block;margin-bottom:6px;font-weight:500}
+.chip{background:var(--soft);border-radius:8px;padding:7px 9px;font-size:13px;margin-bottom:6px}
+.chip.d{background:color-mix(in srgb,var(--ok) 18%,transparent)}
+.arrow{justify-self:center;font:700 14px Onest;color:var(--acc);display:flex;gap:8px;align-items:center}
+.arrow:before{content:"";width:2px;height:22px;background:var(--acc)}
+.pf{border-color:var(--ok);border-width:2px;position:relative}
+.stamp{position:absolute;top:-14px;right:16px;background:var(--ok);color:var(--acc-t);font-weight:700;font-size:13px;padding:5px 12px;border-radius:99px;animation:pop .6s .5s both}
+@keyframes pop{from{transform:scale(.5) rotate(-8deg);opacity:0}}
+.bar{display:grid;grid-template-columns:70px 1fr 40px;gap:10px;align-items:center;font-size:13px;margin-top:8px}
+.bar i{display:block;height:9px;border-radius:9px;background:var(--acc)}
+/* problem */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
+.card h3{font-size:18px;margin-bottom:8px}.card p{margin:0;color:var(--mute)}
+.band{background:var(--ink);color:var(--bg);border-radius:20px;padding:28px 32px;margin-bottom:28px;font-size:20px}
+.band span{color:var(--soft)}
+/* functions */
+.fn{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.fn .card:nth-child(1){grid-column:span 4}.fn .card:nth-child(2){grid-column:span 2}
+.fn .card:nth-child(3){grid-column:span 2}.fn .card:nth-child(4){grid-column:span 2}.fn .card:nth-child(5){grid-column:span 2}
+.fn .card:nth-child(1){background:var(--acc);color:var(--acc-t)}.fn .card:nth-child(1) p{color:inherit;opacity:.9}
+.more{margin-top:24px;color:var(--mute)}
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{text-align:left;padding:15px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 14px Onest;color:var(--mute);background:var(--soft)}tr:last-child td{border:0}
+td:first-child{font-weight:700;white-space:nowrap}.sub{font-size:clamp(20px,3vw,26px);margin:48px 0 18px}
+.tag{display:inline-block;font-size:13px;font-weight:700;padding:2px 10px;border-radius:99px;background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn);margin:0 6px 4px 0}
+/* roles */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tabs button{font:500 16px Onest;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:10px 20px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--acc);color:var(--acc-t);border-color:var(--acc)}
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel .card h3{color:var(--mute);font:500 14px Onest;margin-bottom:10px}.panel .card p{color:var(--ink);font-size:20px}
+.rolenote{margin-top:18px;color:var(--mute)}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.steps .card{position:relative;padding-top:56px}
+.steps .card:before{counter-increment:s;content:counter(s);position:absolute;top:18px;left:24px;width:28px;height:28px;border-radius:50%;background:var(--acc);color:var(--acc-t);font:700 14px/28px Onest;text-align:center}
+.inc{font-size:20px;margin-bottom:24px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+ul.l{margin:0;padding-left:20px;color:var(--mute)}ul.l li{margin-bottom:8px}
+footer{border-top:1px solid var(--line);padding:36px 0;color:var(--mute);font-size:15px}
+@media(max-width:860px){.hero .w,.three,.steps,.two,.panel{grid-template-columns:1fr}.fn{grid-template-columns:1fr}.fn .card{grid-column:auto!important}nav ul{display:none}section{padding:64px 0}.btn.o{margin:10px 0 0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}}
+.qr{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}.qr img{display:block;width:220px;height:220px;background:#fff;padding:12px;border-radius:16px;border:1px solid var(--line)}.qr h2{margin-bottom:12px}.qr p{margin:0;color:var(--mute);font-size:19px}.qr a{color:var(--acc);font-weight:700;word-break:break-all}.auth{margin-top:18px}.auth b{color:var(--ink)}@media(max-width:860px){.qr{grid-template-columns:1fr;justify-items:start}}footer{padding:64px 0;color:var(--ink)}.fin{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}.fin h2{font-size:clamp(24px,3.4vw,34px);margin:6px 0 16px}.names .team,.names .prod{color:var(--mute);margin:0;font-size:16px}.names ul{list-style:none;margin:0 0 20px;padding:0;font-size:22px;font-weight:700}.names li{margin-bottom:6px}.cur{margin:0 0 20px;font-size:22px;font-weight:700}.cur span{display:block;font:500 14px Onest;color:var(--mute);margin-bottom:2px}.code{text-align:center}.code img{display:block;width:220px;height:220px;background:#fff;padding:12px;border-radius:16px;border:1px solid var(--line);margin:0 auto 12px}.code p{margin:0;color:var(--mute);font-size:15px}.code a{color:var(--acc);font-weight:700}@media(max-width:860px){.fin{grid-template-columns:1fr}.code{text-align:left}.code img{margin:0 0 12px}}.logo{font-size:22px}.logo span,.brand span,.prod span{color:var(--acc)}.brand{font:700 clamp(46px,7.4vw,88px)/1 Unbounded,Onest,sans-serif;letter-spacing:-.03em}.bsub{margin:10px 0 28px!important;font:500 15px Onest,sans-serif!important;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)!important}.hero h1{font-size:clamp(22px,3vw,32px);line-height:1.25;max-width:24ch}.hero p:not(.bsub){margin-top:16px}.names .prod{font:700 28px Unbounded,Onest,sans-serif;color:var(--ink);margin-top:8px}.prod small{display:block;font:500 13px Onest,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:4px}</style>
+</head>
+<body>
+<nav><div class="w"><a class="logo" href="#top">Doc<span>miro</span></a>
+<ul><li><a href="#problem">Проблема</a></li><li><a href="#functions">Функции</a></li><li><a href="#data">Данные и угрозы</a></li><li><a href="#vuln">Уязвимости</a></li><li><a href="#protection">Защита</a></li><li><a href="#roles">Роли</a></li><li><a href="#case">Сценарий</a></li><li><a href="#questions">Вопросы</a></li></ul></div></nav>
+
+<header class="hero" id="top"><div class="w">
+<div>
+<div class="brand" aria-label="Docmiro">Doc<span>miro</span></div><p class="bsub">EduPortfolio Hub</p>
+<h1>Проект закончен — достижение осталось у каждого</h1>
+<p>Docmiro (EduPortfolio Hub) — единая среда для командных проектов школьников. Подтверждённый учителем проект автоматически попадает в цифровое портфолио каждого участника.</p>
+<a class="btn" href="#functions">Посмотреть функции</a><a class="btn o" href="#protection">Как защищены данные</a>
+</div>
+<div class="flow" aria-label="Схема: проект превращается в запись портфолио">
+<div class="board"><p class="cap">Командное пространство (пример интерфейса)</p>
+<div class="cols"><div class="col"><b>Задачи</b><div class="chip">Опрос класса</div></div><div class="col"><b>В работе</b><div class="chip">Презентация</div></div><div class="col"><b>Готово</b><div class="chip d">Сбор данных</div><div class="chip d">Макет</div></div></div></div>
+<div class="arrow">учитель подтверждает вклад</div>
+<div class="pf"><span class="stamp">Подтверждено учителем</span><p class="cap">Портфолио ученика · закрытый раздел</p>
+<div class="bar"><span>Автор 1</span><i style="width:90%"></i><span>вклад</span></div>
+<div class="bar"><span>Автор 2</span><i style="width:70%"></i><span>вклад</span></div>
+<div class="bar"><span>Автор 3</span><i style="width:55%"></i><span>вклад</span></div></div>
+</div></div></header>
+
+<section id="problem"><div class="w">
+<h2>Проблема и для кого сервис</h2>
+<p class="lead">Школьные проекты делаются в спешке. Файлы теряются на флешках и в чатах, личный вклад не виден, авторство ничем не защищено, а результаты не собираются в личное достижение ученика.</p>
+<div class="three">
+<div class="card"><h3>Ученики</h3><p>Работают в командах и ведут своё портфолио.</p></div>
+<div class="card"><h3>Учителя</h3><p>Контролируют этапы и оценивают личный вклад каждого.</p></div>
+<div class="card"><h3>Вузы, колледжи и жюри</h3><p>Смотрят только подтверждённые достижения.</p></div>
+</div></div></section>
+
+<section id="functions" style="background:var(--surface)"><div class="w">
+<h2>5 основных функций</h2>
+<p class="lead">Единая среда для проектной работы и цифровое портфолио в одном сервисе.</p>
+<div class="fn">
+<div class="card"><h3>Командное пространство</h3><p>Общие доски, канбан-задачи, чат проекта, календарь и хранилище файлов.</p></div>
+<div class="card"><h3>Журнал вклада</h3><p>Автоматическая фиксация действий и истории правок каждого участника.</p></div>
+<div class="card"><h3>Верификация учителем</h3><p>Подтверждение проекта и индивидуальные оценки по вкладу.</p></div>
+<div class="card"><h3>Цифровое портфолио</h3><p>Подтверждённый проект попадает в закрытый раздел с авторами и ролью ученика.</p></div>
+<div class="card"><h3>Гибкий доступ</h3><p>Ученик сам выбирает, что публиковать, и делится ссылкой или QR-кодом с возможностью отзыва.</p></div>
+</div>
+<p class="more"><b>Для развития:</b> шаблоны проектов, значки достижений, экспорт в PDF, интеграция с электронным дневником, рекомендательные письма.</p>
+</div></section>
+
+<section id="data"><div class="w">
+<h2>Данные и угрозы</h2>
+<p class="lead">Какие данные хранит сервис и чем каждой группе можно навредить.</p>
+<div class="tw"><table>
+<tr><th>Группа данных</th><th>Примеры</th><th>Ключевая угроза</th></tr>
+<tr><td>Личные</td><td>ФИО, класс</td><td><span class="tag">Утечка · захват аккаунта</span>чужой человек входит под логином ученика <span class="tag">Утечка · открытый доступ</span>данные по ошибке становятся видны лишним людям</td></tr>
+<tr><td>Проектные</td><td>Файлы, чаты, черновики</td><td><span class="tag">Плагиат</span>присвоение чужой работы <span class="tag">Саботаж</span>удаление файлов команды после ссоры</td></tr>
+<tr><td>Достижения</td><td>Грамоты, оценки, записи портфолио</td><td><span class="tag">Фальсификация</span>накрутка оценок и баллов</td></tr>
+<tr><td>Технические</td><td>Логи действий</td><td><span class="tag">Подмена</span>изменение или удаление записей</td></tr>
+<tr><td>Публичные ссылки</td><td>Ссылки, QR-коды</td><td><span class="tag">Утечка · открытый доступ</span>ссылка или QR-код по ошибке ведут к закрытым частям портфолио</td></tr>
+</table></div></div></section>
+
+<section id="vuln" style="background:var(--surface)"><div class="w">
+<h2>Уязвимости сервиса</h2>
+<p class="lead">Кроме угроз от людей, у любой платформы есть технические уязвимости. Вот основные и как мы их закрываем.</p>
+<div class="tw"><table>
+<tr><th>Уязвимость</th><th>Чем опасна для сервиса</th><th>Как защищаемся</th></tr>
+<tr><td>SQL-инъекция</td><td>Через поле ввода в запрос к базе попадает чужая команда: можно прочитать или изменить оценки, логи, личные данные. <span class="tag">Утечка</span><span class="tag">Фальсификация</span></td><td>Параметризованные запросы, проверка вводимых данных, минимальные права у учётной записи базы</td></tr>
+<tr><td>XSS (внедрение скрипта)</td><td>Вредоносный код в чате, названии или описании проекта выполняется у других пользователей и может украсть сессию. <span class="tag">Утечка · захват аккаунта</span></td><td>Экранирование всего пользовательского текста при выводе, политика Content Security Policy</td></tr>
+<tr><td>CSRF (подделка запроса)</td><td>Пользователя заставляют незаметно выполнить действие: подтвердить проект, удалить файл, открыть доступ. <span class="tag">Саботаж</span></td><td>CSRF-токены в формах, cookie с атрибутом SameSite</td></tr>
+<tr><td>Нарушение контроля доступа</td><td>Ученик меняет адрес в браузере и открывает чужой проект или портфолио. <span class="tag">Утечка · открытый доступ</span></td><td>Проверка прав на сервере при каждом запросе по ролевой модели, а не только скрытие кнопок</td></tr>
+<tr><td>Подбор пароля</td><td>Злоумышленник перебирает пароли и входит от имени ученика или учителя. <span class="tag">Утечка · захват аккаунта</span><span class="tag">Фальсификация</span></td><td>Двухфакторная аутентификация (2FA), ограничение числа попыток входа, хранение паролей только в виде хэшей</td></tr>
+<tr><td>Небезопасная загрузка файлов</td><td>Вместе с проектом загружается вредоносный файл. <span class="tag">Саботаж</span></td><td>Проверка типа и размера файла, антивирусная проверка, хранение файлов отдельно от кода сервиса</td></tr>
+<tr><td>Перехват данных</td><td>Данные читают при передаче по сети, например в школьном Wi-Fi. <span class="tag">Утечка</span></td><td>HTTPS (TLS) для всей передачи данных, в том числе в школьном Wi-Fi: без HTTPS соединение не устанавливается</td></tr>
+</table></div></div></section>
+
+<section id="protection"><div class="w">
+<h2>Меры защиты</h2>
+<p class="lead">Каждая угроза закрыта организационным правилом и технической мерой. В каждой формулировке указано, кто и что именно может или не может делать.</p>
+<div class="tw"><table>
+<tr><th>Угроза</th><th>Организационная мера</th><th>Техническая мера</th></tr>
+<tr><td>Плагиат</td><td>Авторство фиксируется, спор разбирает учитель по истории правок. Ученик может нажать «Оспорить вклад»</td><td>История правок хранит автора и время каждого изменения. Удалить или изменить её не может никто, включая учителя и администратора</td></tr>
+<tr><td>Утечка:<br>захват аккаунта</td><td>Ученик сообщает учителю о подозрительном входе, администратор блокирует аккаунт и сбрасывает пароль</td><td>Двухфакторная аутентификация (2FA) при входе, ограничение числа попыток ввода пароля, пароли хранятся только в виде хэшей, уведомление о входе с нового устройства</td></tr>
+<tr><td>Утечка:<br>открытый доступ</td><td>Командную работу публикуют только с согласия всех соавторов. Перед публикацией ученик видит список того, что станет доступно</td><td>Ссылки и QR-коды по умолчанию закрыты, приватность настраивается для каждой части портфолио, у ссылки есть срок действия и отзыв в один клик</td></tr>
+<tr><td>Фальсификация</td><td>Оценку ставит и подтверждает только учитель проекта. Взаимная оценка участников оценку не меняет, это лишь дополнение</td><td>Менять оценку может только роль «учитель проекта». После подтверждения оценка блокируется, исправление записывается новой записью с причиной. Журнал действий работает только на добавление: удалить или изменить запись не может никто, включая администратора</td></tr>
+<tr><td>Саботаж</td><td>Задачи и ответственные распределяются в начале проекта. Окончательно удалить файл проекта может только учитель</td><td>Удалённые файлы 30 дней лежат в корзине проекта, плюс ежедневные резервные копии (схема ниже)</td></tr>
+<tr><td>Перехват данных</td><td>Входить в сервис можно только по официальному адресу, о других адресах учитель предупреждает класс</td><td>HTTPS (TLS) для всей передачи данных, в том числе в школьном Wi-Fi. Резервные копии шифруются отдельно, для хранения</td></tr>
+</table></div>
+
+<h3 class="sub">Резервные копии: где хранятся и что делать, если они сломаны</h3>
+<div class="two">
+<div class="card"><h3>Где хранятся</h3><p>По правилу 3-2-1: три копии на двух разных типах носителей, одна вне основного места. Рабочая база лежит на сервере сервиса, вторая копия в облачном хранилище в другом дата-центре, третья на отдельном диске, отключённом от сети: с сервера до неё не добраться.</p></div>
+<div class="card"><h3>Как часто и как долго</h3><p>Копия создаётся каждую ночь. Ежедневные копии хранятся 30 дней, еженедельные 3 месяца. Файлы, удалённые учеником, 30 дней лежат в корзине проекта.</p></div>
+<div class="card"><h3>Если сегодняшнюю и вчерашнюю копии сломали</h3><p>Каждая новая копия автоматически проверяется: сверяется контрольная сумма и делается пробное восстановление. Сломанная копия помечается, система берёт последнюю целую из ежедневных, а если и они повреждены, то еженедельную. Правки между этой копией и моментом сбоя восстанавливаются по журналу действий, он хранится отдельно от копий.</p></div>
+<div class="card"><h3>Кто защищает и кто восстанавливает</h3><p>Записывать копии может только система резервного копирования, ученик, учитель и администратор их менять не могут. Для хранения копии шифруются (AES-256), ключ лежит отдельно от них. Восстановление запускает администратор по запросу учителя, а свой удалённый файл ученик возвращает сам из корзины в один клик.</p></div>
+</div>
+
+<div class="two" style="margin-top:18px">
+<div class="card"><h3>Организационные правила</h3><ul class="l"><li>Публикация только с согласия всех соавторов. Если кто-то против, проект публикуется без его имени или остаётся приватным.</li><li>Споры разбирает учитель по журналу действий.</li><li>Анонимная взаимная оценка участников служит дополнением, оценку учителя она не меняет.</li><li>О подозрительном входе ученик сообщает учителю, администратор блокирует аккаунт.</li></ul></div>
+<div class="card"><h3>Технические меры</h3><ul class="l"><li>2FA при входе, лимит попыток, пароли только в виде хэшей.</li><li>Журнал действий только на добавление: удалить или изменить запись не может никто.</li><li>HTTPS (TLS) для всей передачи данных.</li><li>Три резервные копии, проверка каждой копии, шифрование для хранения.</li><li>Данные несовершеннолетних защищаются по закону о персональных данных: сервис собирает только необходимые сведения, обрабатывает их с согласия родителей и хранит на серверах в России (152-ФЗ).</li></ul></div>
+</div></div></section>
+
+<section id="roles" style="background:var(--surface)"><div class="w">
+<h2>Кто что видит</h2>
+<p class="lead">Доступы не раздаются всем подряд. Выберите роль.</p>
+<div class="tabs" role="tablist" id="tabs"></div>
+<div class="panel" role="tabpanel" aria-live="polite"><div class="card"><h3>Что видит</h3><p id="see">Свои проекты и портфолио</p></div><div class="card"><h3>Что может делать</h3><p id="can">Редактировать задачи, настраивать доступ к портфолио</p></div></div>
+<p class="rolenote">Администрация видит только подтверждённые записи, без личных заметок. Родители видят портфолио в режиме просмотра, только если ученик это разрешил.</p>
+</div></section>
+
+<section id="case"><div class="w">
+<h2>Сценарий: саботаж</h2>
+<p class="inc"><b>Инцидент:</b> участник из-за ссоры удалил итоговый файл перед сдачей.</p>
+<div class="steps">
+<div class="card"><h3>Восстановление</h3><p>Файл возвращается из корзины проекта или из резервной копии в один клик.</p></div>
+<div class="card"><h3>Разбор</h3><p>По Audit Log учитель видит, кто и когда удалил файл.</p></div>
+<div class="card"><h3>Оценка</h3><p>Оценки выставляются по реальному вкладу каждого.</p></div>
+</div></div></section>
+
+<section id="questions"><div class="w">
+<h2>Ключевые вопросы команды</h2><p class="lead">Ответы, на которых построен сервис.</p>
+<div class="three">
+<div class="card"><h3>Справедливая оценка</h3><p>Журнал вклада даёт факты, задачи распределяются в начале проекта, учитель ставит индивидуальные оценки, взаимная оценка участников служит дополнением.</p></div>
+<div class="card"><h3>Авторство и споры</h3><p>Каждая правка хранится с автором и временем; историю не может удалить или изменить никто, включая администратора. Спор разбирает учитель по Audit Log, публикация возможна только по согласию всех авторов.</p></div>
+<div class="card"><h3>Кто видит портфолио</h3><p>Учителя видят только свои проекты, администрация только подтверждённые записи, вузы только по ссылке или QR-коду от ученика, родители только с его разрешения.</p></div>
+</div></div></section>
+
+<footer id="team" style="background:var(--surface)"><div class="w fin">
+<div class="names"><p class="team">Команда «Солянка» · Омск, 2026</p>
+<h2>Авторы проекта</h2>
+<ul><li>Стецун Н.А.</li><li>Яковлев А.П.</li><li>Дьяков А.Д.</li></ul>
+<p class="cur"><span>Куратор</span>Асуханов И.Ю.</p>
+<p class="prod">Doc<span>miro</span> <small>EduPortfolio Hub</small></p></div>
+<div class="code"><img src="data:image/png;base64,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" alt="QR-код со ссылкой на сайт проекта Docmiro" width="220" height="220"><p>Сканируйте, чтобы открыть сайт<br><a href="https://neznakom174.github.io/DocMiro/">neznakom174.github.io/DocMiro</a></p></div>
+</div></footer>
+
+<script>
+var R=[["Ученик","Свои проекты и портфолио","Редактировать задачи, настраивать доступ к портфолио"],["Учитель","Проекты своих классов и логи","Оценивать вклад и подтверждать проекты. Не может удалять или менять записи журнала"],["Администратор","Всех пользователей","Управлять доступом и блокировками, запускать восстановление из копий. Не может менять оценки и записи журнала"],["Вуз / гость","Только публичную ссылку","Только просмотр"],["Родитель","Портфолио, если разрешил ученик","Только просмотр"]];
+var t=document.getElementById("tabs");
+function sel(i){[].forEach.call(t.children,function(b,j){b.setAttribute("aria-selected",j==i)});document.getElementById("see").textContent=R[i][1];document.getElementById("can").textContent=R[i][2]}
+R.forEach(function(r,i){var b=document.createElement("button");b.setAttribute("role","tab");b.textContent=r[0];b.onclick=function(){sel(i)};t.appendChild(b)});
+sel(0);
+</script>
+</body>
+</html>
